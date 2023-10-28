@@ -45,7 +45,7 @@ _submit.addEventListener("click", () => {
             transporter: transporter,
             mailOptions: mailOptions
         })
-    }).then(res=>res.json()).then(res=>{
+    }).then(res=>res.text()).then(res=>{
         console.log(res)
     }).catch(err => {
         console.log("ERROR", err)

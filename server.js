@@ -14,10 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 const corsOptions = {
-    origin: '*', // 允许的来源
-    optionsSuccessStatus: 200 // 一些浏览器可能会发送预检请求（OPTIONS），这里指定成功的状态码
-};
-
+    origin: '*',
+    optionsSuccessStatus: 200
+}
 app.use(cors(corsOptions));
 
 // 路由到网页
@@ -48,24 +47,16 @@ app.post("/api/send", (req, res) => {
         html: req.body.mailOptions.html
     }
 
-    let code = 200
-    let r = ""
-    let ok = true
-
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            code = 404
-            r = "ERROR" + error
-            ok = false
+            res.status(404).send("ERROR", error)
+            return
         }
         else {
-            code = 200
-            r = "Success"
-            ok = true
+            res.send("Success")
+            return
         }
     })
-
-    res.status(code).send(r)
 
 })
 
