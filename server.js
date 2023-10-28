@@ -6,7 +6,7 @@ const bodyParser = require("body-parser")
 const cors = require("cors")
 
 const app = express()
-app.use(express.static("."))
+app.use(express.static("./pages"))
 const port = 3000
 
 
