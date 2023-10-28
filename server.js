@@ -3,6 +3,7 @@ const express = require("express")
 const opn = require("opn")
 const path = require("path")
 const bodyParser = require("body-parser")
+const cors = require("cors")
 
 const app = express()
 app.use(express.static("."))
@@ -12,7 +13,12 @@ const port = 3000
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
+const corsOptions = {
+    origin: '*', // 允许的来源
+    optionsSuccessStatus: 200 // 一些浏览器可能会发送预检请求（OPTIONS），这里指定成功的状态码
+};
 
+app.use(cors(corsOptions));
 
 // 路由到网页
 app.get("/", (req, res) => {
@@ -20,8 +26,6 @@ app.get("/", (req, res) => {
 })
 // 路由到发送
 app.post("/api/send", (req, res) => {
-
-    console.log(req.body)
 
     const transporter = nodemailer.createTransport({
         service: req.body.transporter.service,
@@ -43,14 +47,26 @@ app.post("/api/send", (req, res) => {
         text: req.body.mailOptions.text,
         html: req.body.mailOptions.html
     }
-    transporter.sendMail(mailOptions, (err, info) => {
-        if (err) {
-            res.status(404).send("ERROR " + err)
+
+    let code = 200
+    let r = ""
+    let ok = true
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            code = 404
+            r = "ERROR" + error
+            ok = false
         }
         else {
-            res.status(200).send("Successful")
+            code = 200
+            r = "Success"
+            ok = true
         }
     })
+
+    res.status(code).send(r)
+
 })
 
 app.listen(port, () => {
