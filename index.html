@@ -1,11 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hydrangea Quick Mailer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="./index.css">
 </head>
+
 <body>
-    test_test
+    <div class="container mt-3 mb-3">
+        <form action="">
+            <section>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Service Provider</span>
+                    <input type="text" class="form-control" placeholder="Email Service Provider"
+                        aria-label="Service Provider">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Username</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username">
+                    <span class="input-group-text">Password</span>
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Server">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">From</span>
+                    <input type="text" class="form-control" placeholder="From" aria-label="From">
+                    <span class="input-group-text">To</span>
+                    <input type="text" class="form-control" placeholder="To" aria-label="To">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Cc</span>
+                    <input type="text" class="form-control" placeholder="Cc" aria-label="Cc">
+                    <span class="input-group-text">Bcc</span>
+                    <input type="text" class="form-control" placeholder="Bcc" aria-label="Bcc">
+                </div>
+            </section>
+            <br>
+            <section>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Text</span>
+                    <textarea class="form-control" rows="6" aria-label="Text"></textarea>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Html</span>
+                    <textarea id="html" class="form-control" rows="6" aria-label="Html"></textarea>
+                </div>
+            </section>
+            <br>
+            <section>
+                <div class="input-group mb-3">
+                    <input type="file" class="form-control" id="inputGroupFile02">
+                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                </div>
+            </section>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
