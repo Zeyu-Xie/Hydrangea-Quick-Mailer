@@ -1,8 +1,31 @@
+* {
+  font-family: "typewriter";
+}
+* h1 {
+  font-family: "Bunny Rabbits";
+}
+* h1 #logo {
+  font-family: "Easter Art";
+  display: inline;
+}
 * textarea {
   resize: none;
 }
 * #html {
   font-family: "Courier New", Courier, monospace;
+}
+
+@font-face {
+  font-family: "Bunny Rabbits";
+  src: url("./Bunny_Rabbits.ttf");
+}
+@font-face {
+  font-family: "typewriter";
+  src: url("./typewriter.ttf");
+}
+@font-face {
+  font-family: "Easter Art";
+  src: url("./Easter_Art.ttf");
 }
 
 /*# sourceMappingURL=index.css.map */
