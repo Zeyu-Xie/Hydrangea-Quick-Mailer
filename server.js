@@ -2,10 +2,17 @@ const nodemailer = require("nodemailer")
 const express = require("express")
 const opn = require("opn")
 const path = require("path")
+const bodyParser = require("body-parser")
 
 const app = express()
 app.use(express.static("."))
 const port = 3000
+
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+
 
 // 路由到网页
 app.get("/", (req, res) => {
@@ -14,13 +21,15 @@ app.get("/", (req, res) => {
 // 路由到发送
 app.post("/api/send", (req, res) => {
 
-    const transporter = {
+    console.log(req.body)
+
+    const transporter = nodemailer.createTransport({
         service: req.body.transporter.service,
         auth: {
             user: req.body.transporter.auth.user,
             pass: req.body.transporter.auth.pass
         }
-    }
+    })
     const mailOptions = {
         from: {
             name: req.body.mailOptions.from.name,
@@ -37,11 +46,9 @@ app.post("/api/send", (req, res) => {
     transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
             res.status(404).send("ERROR " + err)
-            return
         }
         else {
-            res.send("Successful")
-            return
+            res.status(200).send("Successful")
         }
     })
 })
